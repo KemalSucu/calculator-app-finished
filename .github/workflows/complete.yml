@@ -23,12 +23,11 @@ jobs:
       - name: Bundle Code into ZIP Package
         run: zip -r deployment-package.zip .
 
-      - run: ls -la coverage
-        
-      #- name: Better Test Reports Action
-  # You may pin to the exact commit or the version.
-  # uses: mridang/action-test-reporter@720c9c56f73e527681bcb30c33da4ccd62bf70fb
-        #uses: mridang/action-test-reporter@v1.3.0
-        #with:
-          #working-directory: .
+      - name: Run Test Reporter and Upload Coverage
+        uses: mridang/action-test-reporter@v1.3.0
+        with:
+          working-directory: .
+          upload-coverage-report: true
+          coverage-file: ./coverage/lcov.info
+          path: ./junit.xml
           
