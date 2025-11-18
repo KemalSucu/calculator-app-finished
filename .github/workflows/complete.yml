@@ -1,21 +1,24 @@
-name: Build Example
+name: Complete CI Pipeline
+
 on: workflow_dispatch
 
 jobs:
-  Build_example:
+  complete:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.3.1
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Setup node.js environment
-        uses: actions/setup-node@v6.0.0
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: install dependencies
+      - name: Install NPM Dependencies
         run: npm install
-
-      - name: build the code
-        run: npm run build
-
-      - name: Test the code
+        
+      - name: Run Unit Tests and Generate Report
         run: npm test
+        
+      - name: Bundle Code into ZIP Package
+        run: zip -r deployment-package.zip .
