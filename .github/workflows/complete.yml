@@ -23,7 +23,7 @@ jobs:
       - name: Bundle Code into ZIP Package
         run: zip -r deployment-package.zip .
 
-      - run: ls -la
+      - run: ls -la coverage
         
       #- name: Better Test Reports Action
   # You may pin to the exact commit or the version.
