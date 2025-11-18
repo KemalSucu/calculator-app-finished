@@ -18,10 +18,12 @@ jobs:
         run: npm install
         
       - name: Run Unit Tests and Generate Report
-        run: npm test
+        run: npm test --coverage
         
       - name: Bundle Code into ZIP Package
         run: zip -r deployment-package.zip .
         
       - name: Better Test Reports Action
         uses: mridang/action-test-reporter@v1.3.0
+        with:
+          coverage-file: ./coverage/lcov.info
