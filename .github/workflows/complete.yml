@@ -1,0 +1,21 @@
+name: Build Example
+on: workflow_dispatch
+
+jobs:
+  Build_example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.3.1
+
+      - name: Setup node.js environment
+        uses: actions/setup-node@v6.0.0
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build the code
+        run: npm run build
+
+      - name: Test the code
+        run: npm test
