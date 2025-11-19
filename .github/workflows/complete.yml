@@ -18,7 +18,7 @@ jobs:
         run: npm install
         
       - name: Run Unit Tests and Generate Report
-        run: npm test -- --coverage
+        run: npm test --coverage
         
       - name: Bundle Code into ZIP Package
         run: zip -r deployment-package.zip .
