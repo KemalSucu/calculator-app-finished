@@ -18,7 +18,7 @@ jobs:
         run: npm install
         
       - name: Run Unit Tests and Generate Report
-        run: npm test --coverage
+        run: npm test -- --coverage
         
       - name: Bundle Code into ZIP Package
         run: zip -r deployment-package.zip .
@@ -26,8 +26,4 @@ jobs:
       - name: Run Test Reporter and Upload Coverage
         uses: mridang/action-test-reporter@v1.3.0
         with:
-          working-directory: .
-          upload-coverage-report: true
-          coverage-file: ./coverage/lcov.info
-          path: ./junit.xml
-          
+          coverage-file: coverage/lcov.info
